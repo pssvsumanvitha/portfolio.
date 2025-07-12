@@ -166,54 +166,56 @@ header {
     flex-direction: column;
     gap: 20px;
 }
-.card-container {
+.carousel {
   display: flex;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-  gap: 20px;
-  padding-bottom: 10px;
+  align-items: center;
+  gap: 10px;
 }
-
-.card {
-  flex: 0 0 auto;
-  scroll-snap-align: center;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 250px;
-  height: 160px;
+.cards {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
+.cards li {
+  background: #8e7dff;
+  width: 80px;
+  height: 120px;
+  border-radius: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-size: 14px;
   text-align: center;
-  padding: 10px;
-  color: #4a90e2;
-  transition: transform 0.3s;
+  padding: 5px;
+  transition: transform 0.3s, width 0.3s, height 0.3s;
 }
-
-.card:hover {
-  transform: scale(1.05);
+.cards li.active {
+  width: 120px;
+  height: 160px;
+  font-size: 16px;
 }
-
-.card h2 {
-  margin: 0 0 5px;
-  font-size: 1.2rem;
+.cards h3 {
+  margin: 0 0 4px;
+  font-size: 1em;
 }
-
-.card p {
+.cards p {
   margin: 0;
-  font-size: 0.9rem;
-  color: #555;
+  font-size: 0.8em;
 }
-
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .card {
-    width: 200px;
-    height: 140px;
-  }
+button {
+  background: #4CAF50;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+button:hover {
+  background: #45a049;
 }
 
 .bar {
