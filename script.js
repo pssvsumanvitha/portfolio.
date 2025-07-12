@@ -26,21 +26,31 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
-const cards = document.querySelectorAll('.cards li');
-let activeIndex = 2; // starts at third card
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = document.querySelectorAll('.card');
+  let current = 0;
 
-function updateActiveCard() {
-  cards.forEach((card, index) => {
-    card.classList.toggle('active', index === activeIndex);
+  function updateCards() {
+    cards.forEach(card => card.className = 'card'); // reset all
+
+    cards[current].classList.add('active');
+
+    const prev = (current - 1 + cards.length) % cards.length;
+    const next = (current + 1) % cards.length;
+
+    cards[prev].classList.add('prev');
+    cards[next].classList.add('next');
+  }
+
+  document.getElementById('prev').addEventListener('click', () => {
+    current = (current - 1 + cards.length) % cards.length;
+    updateCards();
   });
-}
 
-document.getElementById('prev').addEventListener('click', () => {
-  activeIndex = (activeIndex - 1 + cards.length) % cards.length;
-  updateActiveCard();
-});
+  document.getElementById('next').addEventListener('click', () => {
+    current = (current + 1) % cards.length;
+    updateCards();
+  });
 
-document.getElementById('next').addEventListener('click', () => {
-  activeIndex = (activeIndex + 1) % cards.length;
-  updateActiveCard();
+  updateCards(); // initialize
 });
