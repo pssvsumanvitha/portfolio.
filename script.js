@@ -26,3 +26,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+const cards = document.querySelectorAll('.cards li');
+let activeIndex = 2; // starts at third card
+
+function updateActiveCard() {
+  cards.forEach((card, index) => {
+    card.classList.toggle('active', index === activeIndex);
+  });
+}
+
+document.getElementById('prev').addEventListener('click', () => {
+  activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+  updateActiveCard();
+});
+
+document.getElementById('next').addEventListener('click', () => {
+  activeIndex = (activeIndex + 1) % cards.length;
+  updateActiveCard();
+});
