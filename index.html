@@ -1,121 +1,1042 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet"> <!-- Adding Kanit font -->
-    <link rel="stylesheet" href="styles.css"> 
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Font Awesome icons -->
-    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.0/css/boxicons.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>S S V Sumanvitha Palivela | Software Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        :root {
+            --primary: #0a0e27;
+            --secondary: #1a1f3a;
+            --accent: #ff6b9d;
+            --accent-glow: #ff6b9d33;
+            --text: #e8e8f2;
+            --text-muted: #a0a0b8;
+            --card-bg: #14182e;
+            --border: #2a2f4a;
+            --gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
 
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            opacity: 0.03;
+            background: 
+                radial-gradient(circle at 20% 50%, var(--accent) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, #667eea 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, #f5576c 0%, transparent 50%);
+            animation: bgShift 20s ease-in-out infinite;
+        }
+
+        @keyframes bgShift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-20px, 20px) scale(1.1); }
+        }
+
+        /* Container */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 900;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-label {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            animation: fadeIn 0.8s ease-out 0.2s both;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            animation: fadeIn 0.8s ease-out 0.6s both;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out 0.8s both;
+        }
+
+        .hero-contact {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            animation: fadeIn 0.8s ease-out 1s both;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: var(--text);
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-family: 'IBM Plex Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--accent-glow);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--accent);
+            background: var(--accent-glow);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 3rem;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .skill-category {
+            font-size: 0.85rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: var(--secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent-glow);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        /* Experience Timeline */
+        .experience-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-2);
+            border-radius: 12px 0 0 12px;
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+            border-color: var(--accent);
+        }
+
+        .experience-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .experience-company {
+            font-size: 1rem;
+            color: var(--accent);
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-date {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            padding: 0.5rem 1rem;
+            background: var(--secondary);
+            border-radius: 6px;
+        }
+
+        .experience-description {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .experience-description li {
+            margin-bottom: 0.5rem;
+            list-style-position: inside;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2.5rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .project-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .project-card:hover::after {
+            opacity: 1;
+        }
+
+        .project-header {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-subtitle {
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .project-description {
+            position: relative;
+            z-index: 1;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-tech {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--secondary);
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            border: 1px solid var(--border);
+        }
+
+        .project-links {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--text);
+            transform: translateX(5px);
+        }
+
+        /* Certifications Grid */
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .certification-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .certification-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-3);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .certification-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .certification-card:hover::before {
+            opacity: 0.05;
+        }
+
+        .certification-icon {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .certification-title {
+            position: relative;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .certification-issuer {
+            position: relative;
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .certification-badge {
+            position: relative;
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: var(--secondary);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--border);
+        }
+
+        /* Achievements Section */
+        .achievements-list {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .achievement-item {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 12px;
+            padding: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .achievement-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .achievement-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .achievement-role {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .achievement-description {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .projects-grid,
+            .certifications-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
 </head>
-
 <body>
-    <header>
-        <a href="#" class="logo">Portfolio</a>
-        <nav class="navbar">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="Resume.4425.pdf" target="_blank">Resume</a>
-            <a href="#contact">Contact</a>
-            <a href="#home">Portfolio</a>
-        </nav>
-    </header>
-
-    <section class="home">
-    <div class="home-context">
-        <h3>HI!</h3>
-        <h1>I'M S.S.V.SUMANVITHA<br>PALIVELA</h1>
-        <h3>AND I'M A <span class="text"></span></h3>
-        <p>Passionate frontend developer skilled in creating responsive and user-friendly web interfaces using HTML, CSS, and JavaScript. I love turning designs into seamless digital experiences.</p>
-        <div class="home-sci">
-            <a href="https://github.com/pssvsumanvitha" class="github" target="_blank"><i class='bx bxl-github'></i></a>
-            <a href="https://www.linkedin.com/in/s-s-v-sumanvitha-palivela-a99577284/" class="linkedin" target="_blank"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://leetcode.com/u/sumanvitha_palivela/" class="leetcode"><i class='bx bx-code-alt' target="_blank"></i></a>
-            <a href="https://www.hackerrank.com/profile/Pssvsumanvitha" class="hackerrank" target="_blank"><i class='bx bx-code-curly'></i></a>
-            <a href="https://wa.me/8885087726" target="_blank">
-                <i class='bx bxl-whatsapp'></i>
-            </a>
-            
-            <a href="22a31a4425@gmail.com" target="_blank"><i class='bx bx-envelope'></i></a>
+    <div class="bg-animation"></div>
     
-        </div><br>
-        <a href="#about" class="btn-about">About Me</a>
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">SSV</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#certifications">Certifications</a></li>
+                <li><a href="#achievements">Achievements</a></li>
+            </ul>
+        </nav>
 
-    </div>
-    </section>
-    <section class="about" id="about">
-        <div class="about-text">
-            <h2>About Me!!</h2>
-            <h4>FrontEnd Developer</h4>
-            <p>"I am a B.Tech Computer Science student at Pragati Engineering College, specialized in frontend development. I have a strong passion for creating visually appealing and user-friendly web applications. With skills in HTML, CSS, JavaScript, and Django, I focus on building responsive and interactive designs that enhance user experience.
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-label">Software Developer</div>
+                <h1 class="hero-title">S S V Sumanvitha Palivela</h1>
+                <p class="hero-subtitle">Full Stack Developer & Problem Solver</p>
+                <p class="hero-description">
+                    Computer Science graduate skilled in Python, Java, MySQL, and Django, passionate about building 
+                    scalable web applications and solving complex problems. Currently seeking opportunities to apply 
+                    technical skills in real-world projects and grow as a software developer.
+                </p>
+                <div class="hero-contact">
+                    <div class="contact-item">
+                        📧 <a href="mailto:22a31a4425@gmail.com">22a31a4425@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        📱 +91-8885087726
+                    </div>
+                    <div class="contact-item">
+                        📍 Kakinada, Andhra Pradesh
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn btn-primary">View Projects</a>
+                    <a href="https://github.com/yourusername" class="btn btn-secondary" target="_blank">GitHub Profile</a>
+                </div>
+            </div>
+        </section>
 
-                I enjoy exploring new technologies and improving my design skills to create seamless digital experiences. My goal is to blend creativity with functionality, ensuring that every project I work on is both efficient and engaging."</p>
-        </div>
-    </section>
-    <h1 class="subtitle"></h1>
-       <footer>
-            <p>My Projects</p>
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="section-label">Technical Expertise</div>
+            <h2 class="section-title">Skills & Technologies</h2>
+            
+            <div class="skills-grid">
+                <div class="skill-card fade-in delay-1">
+                    <div class="skill-category">Programming Languages</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Java</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in delay-2">
+                    <div class="skill-category">Frontend Technologies</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">HTML</span>
+                        <span class="skill-tag">CSS</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in delay-3">
+                    <div class="skill-category">Frameworks & Libraries</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">Matplotlib</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in delay-4">
+                    <div class="skill-category">Databases</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">MongoDB</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in delay-1">
+                    <div class="skill-category">Development Tools</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">GitHub</span>
+                        <span class="skill-tag">VS Code</span>
+                    </div>
+                </div>
+
+                <div class="skill-card fade-in delay-2">
+                    <div class="skill-category">Problem Solving</div>
+                    <div class="skill-list">
+                        <span class="skill-tag">LeetCode</span>
+                        <span class="skill-tag">HackerRank</span>
+                        <span class="skill-tag">Data Structures</span>
+                        <span class="skill-tag">Algorithms</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience">
+            <div class="section-label">Professional Journey</div>
+            <h2 class="section-title">Experience</h2>
+
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Web Full Stack Development Virtual Intern</div>
+                        <div class="experience-company">AICTE - Remote</div>
+                    </div>
+                    <div class="experience-date">Jul 2024 – Sep 2024</div>
+                </div>
+                <ul class="experience-description">
+                    <li>Built responsive user interfaces using HTML, CSS, JavaScript, and React</li>
+                    <li>Integrated frontend with MySQL and MongoDB databases and backend APIs</li>
+                    <li>Collaborated on full-stack projects in an agile development environment</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="section-label">Portfolio</div>
+            <h2 class="section-title">Featured Projects</h2>
+
+            <div class="projects-grid">
+                <div class="project-card fade-in delay-1">
+                    <div class="project-header">
+                        <h3 class="project-title">Leet-AI</h3>
+                        <p class="project-subtitle">LeetCode Assistant</p>
+                    </div>
+                    <p class="project-description">
+                        Built an AI-powered LeetCode assistant that analyzes problems and generates structured hints, 
+                        improving problem-solving efficiency without revealing solutions. Features Chrome extension 
+                        integration for seamless workflow.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Flask</span>
+                        <span class="tech-tag">REST APIs</span>
+                        <span class="tech-tag">Chrome Extension</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/leet-ai" class="project-link" target="_blank">
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in delay-2">
+                    <div class="project-header">
+                        <h3 class="project-title">Healthcare System</h3>
+                        <p class="project-subtitle">Appointment & Record Management</p>
+                    </div>
+                    <p class="project-description">
+                        Developed a secure healthcare portal enabling appointment booking and digital medical record 
+                        management, streamlining patient–doctor interactions. Implemented role-based access control 
+                        and data encryption for HIPAA compliance.
+                    </p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Django</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">CSS</span>
+                        <span class="tech-tag">JavaScript</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/yourusername/healthcare-system" class="project-link" target="_blank">
+                            View on GitHub →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications">
+            <div class="section-label">Professional Credentials</div>
+            <h2 class="section-title">Certifications</h2>
+
+            <div class="certifications-grid">
+                <div class="certification-card fade-in delay-1">
+                    <div class="certification-icon">🏆</div>
+                    <h3 class="certification-title">The Joy of Computing Using Python</h3>
+                    <p class="certification-issuer">NPTEL</p>
+                    <span class="certification-badge">Elite Certification</span>
+                </div>
+
+                <div class="certification-card fade-in delay-2">
+                    <div class="certification-icon">⚡</div>
+                    <h3 class="certification-title">Platform Developer I</h3>
+                    <p class="certification-issuer">Salesforce</p>
+                    <span class="certification-badge">Professional</span>
+                </div>
+
+                <div class="certification-card fade-in delay-3">
+                    <div class="certification-icon">🔧</div>
+                    <h3 class="certification-title">System Administrator</h3>
+                    <p class="certification-issuer">ServiceNow</p>
+                    <span class="certification-badge">Certified</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Achievements Section -->
+        <section id="achievements">
+            <div class="section-label">Recognition</div>
+            <h2 class="section-title">Achievements & Leadership</h2>
+
+            <div class="achievements-list">
+                <div class="achievement-item fade-in delay-1">
+                    <h3 class="achievement-title">College Technical Event Website</h3>
+                    <p class="achievement-role">Head of Web Team</p>
+                    <p class="achievement-description">
+                        Led the design and development of the official event website, coordinating with a team of 
+                        developers to deliver a responsive and feature-rich platform. Received Appreciation Certificate 
+                        from the Department for outstanding contribution.
+                    </p>
+                </div>
+
+                <div class="achievement-item fade-in delay-2">
+                    <h3 class="achievement-title">Data Analytics Club</h3>
+                    <p class="achievement-role">Coordinator</p>
+                    <p class="achievement-description">
+                        Contributed to collaborative data analytics activities and delivered seminars on data analytics 
+                        concepts. Organized workshops and mentored students in data science fundamentals and practical 
+                        applications.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <div class="section-label">Academic Background</div>
+            <h2 class="section-title">Education</h2>
+
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Bachelor of Technology</div>
+                        <div class="experience-company">Computer Science Engineering</div>
+                        <div style="color: var(--text-muted); margin-top: 0.5rem;">Pragati Engineering College</div>
+                    </div>
+                    <div class="experience-date">2022 – 2026</div>
+                </div>
+                <p class="experience-description" style="list-style: none;">
+                    <strong>CGPA:</strong> 8.14/10.0
+                </p>
+            </div>
+
+            <div class="experience-item fade-in">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Intermediate (MPC)</div>
+                        <div class="experience-company">Sri Chaitanya Junior College</div>
+                    </div>
+                    <div class="experience-date">2020 – 2022</div>
+                </div>
+                <p class="experience-description" style="list-style: none;">
+                    <strong>Percentage:</strong> 70.4%
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/yourprofile" class="social-link" target="_blank">LinkedIn</a>
+                    <a href="https://github.com/yourusername" class="social-link" target="_blank">GitHub</a>
+                    <a href="https://leetcode.com/yourprofile" class="social-link" target="_blank">LeetCode</a>
+                    <a href="https://hackerrank.com/yourprofile" class="social-link" target="_blank">HackerRank</a>
+                    <a href="https://yourportfolio.com" class="social-link" target="_blank">Portfolio</a>
+                </div>
+                <p class="footer-text">© 2026 S S V Sumanvitha Palivela. Crafted with passion for technology.</p>
+            </div>
         </footer>
     </div>
-   </section>    
-   <section id="projects">
-    <div class="projects-container">
-        
-        <!-- Project 1 -->
-        <div class="project">
-            <img src="edatum.jpg.png" alt="Project 1">
-            <h3>EDATUM 2K25</h3>
-            <p>EDATUM2K25 is a website designed for a technical college event, providing event registration and essential information</p>
-            <a href="https://edatum-2k25.netlify.app/" target="_blank" class="view-btn">View</a>
-        </div>
 
-        <div class="project">
-            <img src="delivery.jpg" alt="Project 4">
-            <h3>FOODFUSION</h3>
-            <p>A restaurant management website for efficient order handling, reservations, and customer management.</p>
-            <a href="https://foodfusionn.netlify.app/" target="_blank" class="view-btn">View</a>
-        </div>
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-        <!-- Project 3 -->
-        <div class="project">
-            <img src="health.png" alt="Project 3">
-            <h3>Health-CARE</h3>
-            <p>A full-stack web-based application designed to streamline healthcare services and
-                The system ensures improved efficiency, accuracy, and accessibility in hospital and clinic operations.</p>
-            <a href="https://github.com/pssvsumanvitha/Hospital_Management_using_Django" class="view-btn">View</a>
-        </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
 
-        <div class="project">
-            <img src="fraud.jpg" alt="Project 2">
-            <h3>CREDIT-CARD FRAUD-DETECTION</h3>
-            <p>Credit Card Fraud Detection using ML applies preprocessing techniques to enhance accuracy in identifying fraudulent transactions</p>
-            <a href="https://github.com/pssvsumanvitha/Credit-card-FRAUD-Detection" target="_blank" class="view-btn">View</a>
-        </div>
-        <!-- Project 4 -->
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
 
-    </div>
-</section>
-
-<section id="contact">
-    <div class="contact-container">
-        <h2>Contact Me</h2>
-        <p>If you have any questions or opportunities, feel free to reach out!</p>
-        <a href="22a31a4425@gmail.com" class="email-btn">Send Email</a>
-    </div>
-</section>
-    <script src="script.js"></script> <!-- External JS for any interaction -->
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
-
 </html>
-
-
-
